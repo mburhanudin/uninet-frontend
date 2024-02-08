@@ -4,7 +4,7 @@ import MainLayout from "./MainLayout";
 import useBlog from "../../hooks/useBlog";
 import CustomTable from "../organisms/Table";
 import ConfirmationDialog from "../organisms/ConfirmationDialog";
-import { Button, Box } from "@mui/material";
+import { Button, Box, CircularProgress } from "@mui/material";
 import Modal from "../organisms/Modal";
 
 const BlogTemplate: React.FC = () => {
@@ -30,7 +30,16 @@ const BlogTemplate: React.FC = () => {
   ];
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
   }
 
   if (error) {
@@ -69,7 +78,12 @@ const BlogTemplate: React.FC = () => {
               Add
             </Button>
           </Box>
-          <CustomTable columns={columns} data={blogs} onEdit={handleEdit} onDelete={handleDeleteWithConfirmation}/>
+          <CustomTable
+            columns={columns}
+            data={blogs}
+            onEdit={handleEdit}
+            onDelete={handleDeleteWithConfirmation}
+          />
         </div>
       </MainLayout>
     </>

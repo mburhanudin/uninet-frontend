@@ -21,7 +21,7 @@ const useLogin = () => {
       });
 
       if (response !== null && response) {
-        // Registrasi success
+        // Login success
         toast.success('Login successful');
         sessionStorage.setItem('token', response.token);
         
@@ -31,7 +31,7 @@ const useLogin = () => {
         }
         
       } else {
-        // Registrasi failed
+        // Login failed
         toast.error('Login failed');
       }
     } finally {
